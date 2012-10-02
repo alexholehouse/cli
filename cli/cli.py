@@ -2,7 +2,7 @@
 
 import os
 import sys
-
+from datetime import datetime
 
 #--------------------------------------------------------
 class CommandlineInterfaceError(BaseException):
@@ -30,6 +30,12 @@ def print_in_middle(message, border=" "):
     length_of_message = len(message)
     offset  = 1 + length_of_message%2
     print border + " " * int((float(columns)/2-(float(length_of_message)/2))) + message + " " * int(float(columns)/2-(float(length_of_message)/2)-offset) + border
+
+def big_message(message, seperator="#"):
+    print_terminal_line(seperator)
+    print_in_middle(message, seperator)
+    print_terminal_line(seperator)
+
     
 
 
@@ -69,7 +75,6 @@ def yes_or_no(message, default="N"):
         error_message = "ERROR in cli.yes_or_no() - invalid default specified: '" + default + "'"
         raise CommandlineInterfaceError(error_message);
 
-
 def clear_screen():
     os.system('clear')
 
@@ -81,10 +86,12 @@ def error_and_quit(message):
 def error_and_continue(message):
     print "[ERROR] " + message
     
-
 def warning_and_continue(message):
     print "[WARNING] " + message
 
+def status_update(message):
+    print str(datetime.now()) + "| " + message
+    
 
 
 
