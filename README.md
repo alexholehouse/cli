@@ -1,1 +1,1 @@
-Repsoitory of functions for nice command line interfacing for scripts in python
+Repository of functions for which facilitate command line interfacing for scripts in Python.
